@@ -9,7 +9,7 @@ By default, this runs the full **prepare pipeline for House speeches**.
 ### Basic usage
 
 ```bash
-python -m congress_pipeline.preprocess.prepare \
+python -m prepare.prepare \
   --scraped-root data/scraped/congress_118 \
   --output-root data/congress_118 \
   --base-stopwords data/stopwords.txt \
@@ -19,7 +19,7 @@ python -m congress_pipeline.preprocess.prepare \
 ### Run for Senate
 
 ```bash
-python -m congress_pipeline.preprocess.prepare \
+python -m prepare.prepare \
   --scraped-root data/scraped/congress_118 \
   --output-root data/congress_118 \
   --base-stopwords data/stopwords.txt \
@@ -30,7 +30,7 @@ python -m congress_pipeline.preprocess.prepare \
 ### Run for both chambers
 
 ```bash
-python -m congress_pipeline.preprocess.prepare \
+python -m prepare.prepare \
   --scraped-root data/scraped/congress_118 \
   --output-root data/congress_118 \
   --base-stopwords data/stopwords.txt \
@@ -42,4 +42,8 @@ python -m congress_pipeline.preprocess.prepare \
 
 - `--json-limit 1000` to test on a smaller subset of scraped JSON files
 - `--split-chunksize 50000` for large CSV splitting
+<<<<<<< HEAD
 - `--verbose` for detailed logging
+=======
+- `--verbose` for detailed logging
+>>>>>>> 9981a90 (changes)
