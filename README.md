@@ -42,8 +42,4 @@ python -m prepare.prepare \
 
 - `--json-limit 1000` to test on a smaller subset of scraped JSON files
 - `--split-chunksize 50000` for large CSV splitting
-<<<<<<< HEAD
 - `--verbose` for detailed logging
-=======
-- `--verbose` for detailed logging
->>>>>>> 9981a90 (changes)
