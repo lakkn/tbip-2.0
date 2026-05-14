@@ -194,6 +194,9 @@ def run(
 
     kept_indices = find_kept_indices(original_docs, filtered_docs)
     filtered_df = finalized_df.iloc[kept_indices].copy()
+    # account for NAN speaker_bioguide_id
+    filtered_df["Speaker_Bioguide_ID"] = filtered_df["Speaker_Bioguide_ID"].fillna("UNKNOWN_SPEAKER").astype(str)
+    filtered_df["Text"] = filtered_df["Text"].fillna("").astype(str)
     filtered_speeches = [original_docs[i] for i in kept_indices]
 
     stopwords = load_stopwords(base_stopwords, procedural_stopwords)

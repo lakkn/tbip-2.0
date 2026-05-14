@@ -5,12 +5,12 @@ import argparse
 import logging
 from pathlib import Path
 
-from congress_pipeline.preprocess.filter_procedural import run as run_filter_procedural
-from congress_pipeline.preprocess.preprocess_post_procedural import run as run_preprocess_post_procedural
-from congress_pipeline.preprocess.preprocess_speeches import run as run_preprocess_speeches
-from congress_pipeline.preprocess.process_raw_json_to_csv import run as run_process_raw_json_to_csv
-from congress_pipeline.preprocess.split_house_senate import run as run_split_house_senate
-from congress_pipeline.preprocess.vocab_txt_to_json import run as run_vocab_txt_to_json
+from prepare.filter_procedural import run as run_filter_procedural
+from prepare.preprocess_post_procedural import run as run_preprocess_post_procedural
+from prepare.preprocess_speeches import run as run_preprocess_speeches
+from prepare.process_raw_json_to_csv import run as run_process_raw_json_to_csv
+from prepare.split_house_senate import run as run_split_house_senate
+from prepare.vocab_txt_to_json import run as run_vocab_txt_to_json
 
 
 def setup_logging(verbose: bool) -> None:
