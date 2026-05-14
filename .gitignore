@@ -1,0 +1,20 @@
+# ignore venv
+.venv/
+venv/
+env/
+.env/
+tbip38/
+
+# ignore mallet
+mallet-2.0.8/
+
+# Ignore everything in data
+data/*
+
+# But keep the procedural models directory
+!data/models/
+!data/models/**
+
+# Keep specific files
+!data/stopwords.txt
+!data/legislator-info-1990-2020.json

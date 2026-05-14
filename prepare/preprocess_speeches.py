@@ -45,8 +45,23 @@ def remove_low_activity_speakers(raw_data: pd.DataFrame, min_speeches_per_speake
 
 
 def build_author_indices(speakers: list[str]) -> tuple[np.ndarray, np.ndarray]:
-    speaker_to_id = {speaker: idx for idx, speaker in enumerate(sorted(set(speakers)))}
-    author_indices = np.array([speaker_to_id[s] for s in speakers], dtype=np.int32)
+    cleaned_speakers = [
+        str(speaker).strip()
+        if pd.notna(speaker) and str(speaker).strip()
+        else "UNKNOWN_SPEAKER"
+        for speaker in speakers
+    ]
+
+    speaker_to_id = {
+        speaker: idx
+        for idx, speaker in enumerate(sorted(set(cleaned_speakers)))
+    }
+
+    author_indices = np.array(
+        [speaker_to_id[speaker] for speaker in cleaned_speakers],
+        dtype=np.int32,
+    )
+
     author_map = np.array(list(speaker_to_id.keys()))
     return author_indices, author_map
 
@@ -171,6 +186,9 @@ def run(
     raw_data = pd.read_csv(input_csv)
     validate_input_csv(raw_data)
     raw_data = remove_low_activity_speakers(raw_data, min_speeches_per_speaker)
+    # some speaker bioguide id are missing
+    raw_data["Speaker_Bioguide_ID"] = raw_data["Speaker_Bioguide_ID"].fillna("UNKNOWN_SPEAKER").astype(str)
+    raw_data["Text"] = raw_data["Text"].fillna("").astype(str)
     stopwords = load_stopwords(stopwords_fpath)
 
     speakers = list(raw_data["Speaker_Bioguide_ID"])
